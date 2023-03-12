@@ -1,3 +1,10 @@
+/*
+server-sent events - technique that allows a client to receive automatic updates from server
+    * unidirectional (data is sent only by server)
+    * only UTF-8 text format
+    * uses HTTP
+
+*/
 const express = require('express');
 const cors = require('cors');
 const events = require('events');
@@ -10,11 +17,11 @@ app.use(express.json());
 app.use(cors());
 
 app.get('/connect', (request, response) => {
-    // define headers for event sourcing
+    // define headers for event streaming
     response.writeHead(200, {
-        'Connection': 'keep-alive',
-        'Content-Type': 'text/event-stream',
-        'Cache-Control': 'no-cache',
+        'Connection': 'Keep-Alive',
+        'Content-Type': 'Text/Event-Stream',
+        'Cache-Control': 'No-Cache',
     });
 
     eventEmitter.on('post-message', (message) => {
